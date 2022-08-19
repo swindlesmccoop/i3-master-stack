@@ -1,4 +1,3 @@
-#!/usr/local/bin/python3
 
 # This script enforces a specific layout on i3 automatically. The intended
 # layout is similar to master stacked in dwm, but inserting the new window at
