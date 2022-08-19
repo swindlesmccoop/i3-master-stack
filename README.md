@@ -6,8 +6,7 @@ and [YourArmpitStinks](https://www.reddit.com/user/YourArmpitStinks/)._
 
 ## Installation
 
-1) Download and place the files [master-stack](https://raw.githubusercontent.com/Julynx/i3-master-stack/main/master-stack) and [swapper](https://raw.githubusercontent.com/Julynx/i3-master-stack/main/swapper) in your 
-`~/.config/i3` directory.
+1) Run `make` to make sure you satisfy dependencies and `sudo make install` to install the program.
 
 2) Add the following lines to your `~/.config/i3/config`
 ```
@@ -15,14 +14,14 @@ and [YourArmpitStinks](https://www.reddit.com/user/YourArmpitStinks/)._
 # AUTOSTART #
 #############
 
-exec --no-startup-id $HOME/.config/i3/master-stack
+exec --no-startup-id master-stack
 
 
 ############
 # BINDINGS #
 ############
 
-bindsym $mod+Tab exec --no-startup-id $HOME/.config/i3/swapper
+bindsym $mod+Tab exec --no-startup-id swapper
 ```
 
 3) You may have to restart i3 or log out and log back in for the changes to take effect.
@@ -48,7 +47,7 @@ consecutive windows will be automatically inserted into the stack.
 └────────┴───────┘
 ```
 Pressing the swapping keybind `$mod+Tab` will
-swap the focused window and the master window. 
+swap the focused window and the master window.
 
 ```
 ┌───────┬───────┐    ┏━━━━━━━┓───────┐
