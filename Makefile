@@ -17,8 +17,8 @@ install:
 	install -Dm755 ./master-stack "${DESTDIR}${PREFIX}/bin/master-stack"
 	install -Dm755 ./swapper "${DESTDIR}${PREFIX}/bin/swapper"
 
-clean:
+uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/master-stack
 	rm -f ${DESTDIR}${PREFIX}/bin/swapper
 
-.PHONY: i3-master-stack install clean
+.PHONY: i3-master-stack install uninstall
