@@ -2,10 +2,12 @@ PREFIX = /usr/local
 PY3BIN = $(shell which python3)
 
 i3-master-stack:
+	@printf "Checking for pip..."
+	@command -v pip > /dev/null && printf "\033[0;32mfound\033[0m\n" || (printf "\033[0;32mPlease install pip.\033[0m\n" && exit 1)
 	@printf "Checking for i3ipc..."
-	@pip list 2>/dev/null | grep 'i3ipc' > /dev/null && printf "\033[0;32mfound\033[0m\n" || printf "\033[31mPlease install the 'i3ipc' pip module.\033[0m\n"
+	@pip list 2>/dev/null | grep 'i3ipc' > /dev/null && printf "\033[0;32mfound\033[0m\n" || (printf "\033[31mPlease install the 'i3ipc' pip module.\033[0m\n" && exit 1)
 	@printf "Checking for python3..."
-	@command -v python3 > /dev/null && printf "\033[0;32mfound\033[0m\n\033[0;32mReady to install! Run 'make install' to install the program.\n" || printf "\033[31mPlease install python3.\n"
+	@command -v python3 > /dev/null && printf "\033[0;32mfound\033[0m\n\033[0;32mReady to install! Run 'make install' to install the program.\033[0m\n" || (printf "\033[31mPlease install python3.\033[0m\n" && exit 1)
 
 install:
 	@sed -i "1d" master-stack
@@ -17,8 +19,8 @@ install:
 	install -Dm755 ./master-stack "${DESTDIR}${PREFIX}/bin/master-stack"
 	install -Dm755 ./swapper "${DESTDIR}${PREFIX}/bin/swapper"
 
-clean:
+uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/master-stack
 	rm -f ${DESTDIR}${PREFIX}/bin/swapper
 
-.PHONY: i3-master-stack install clean
+.PHONY: i3-master-stack install uninstall
